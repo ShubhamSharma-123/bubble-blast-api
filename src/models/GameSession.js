@@ -1,0 +1,3 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({userId:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},levelId:{type:Number,required:true,min:1,max:40},startedAt:{type:Date,default:Date.now},completedAt:Date,shotsUsed:{type:Number,default:0},score:{type:Number,default:0},bubblesPopped:{type:Number,default:0},stars:{type:Number,default:0},completed:{type:Boolean,default:false},status:{type:String,enum:['active','completed','failed'],default:'active'}},{timestamps:true});
+export default mongoose.model('GameSession',schema);

@@ -1,0 +1,4 @@
+import {Router} from 'express';import auth from '../middleware/auth.js';import User from '../models/User.js';import GameSession from '../models/GameSession.js';
+const router=Router();router.use(auth);
+router.get('/progress',async(req,res)=>{const user=await User.findById(req.user.id).select('-passwordHash');if(!user)return res.status(404).json({message:'Player not found.'});res.json({progress:{currentLevel:user.currentLevel,totalScore:user.totalScore,totalStars:user.totalStars,bubblesPopped:user.bubblesPopped,bestCombo:user.bestCombo,completedLevels:user.completedLevels}})});
+export default router;
