@@ -58,15 +58,11 @@ import publicRoutes from "./routes/public.js";
 const app = express();
 const GAME_NAME = process.env.GAME_NAME || "BUBBLE BLAST ADVENTURE";
 
-const allowedOrigins = (
-  process.env.CLIENT_URL || "http://localhost:5173,http://127.0.0.1:5173"
-)
-  .split(",")
-  .map((s) => s.trim());
+
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: 'https://bubble-blast-shubham.netlify.app',
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
